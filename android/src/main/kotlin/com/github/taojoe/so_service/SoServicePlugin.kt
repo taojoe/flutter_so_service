@@ -97,7 +97,7 @@ fun Map<String, Any?>.asNotificationChannelConfig():NotificationChannelConfig{
 
 fun Map<String, Any?>.asNotificationConfig():NotificationConfig{
   return NotificationConfig(
-          this["id"] as Int? ?:0,
+          this["id"] as Int? ?:1,
           this["icon"] as String,
           this["title"] as String?,
           this["content"] as String?,

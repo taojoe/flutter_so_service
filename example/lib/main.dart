@@ -40,6 +40,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  startForegroundService() async{
+    await SoService.startForegroundService(
+      NotificationConfig(1, 'ic_launcher', 'title', 'content', 'subtext', true, true),
+      null);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,8 +53,16 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: <Widget>[
+            Center(
+              child: Text('Running on: $_platformVersion\n'),
+            ),
+            RaisedButton(
+              child: Text('startForegroundService'),
+              onPressed : startForegroundService
+            )
+          ],
         ),
       ),
     );
