@@ -3,7 +3,7 @@
 @implementation SoServicePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"so_service"
+      methodChannelWithName:@"com.github.taojoe.so_service/method"
             binaryMessenger:[registrar messenger]];
   SoServicePlugin* instance = [[SoServicePlugin alloc] init];
   [registrar addMethodCallDelegate:instance channel:channel];
