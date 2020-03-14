@@ -53,4 +53,7 @@ class SoService {
     }
     return await _methodChannel.invokeMethod<bool>('startForegroundService', data);
   }
+  static Future<bool> stopForegroundService() async{
+    return await _methodChannel.invokeMethod<bool>('stopForegroundService');
+  }
 }

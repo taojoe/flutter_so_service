@@ -49,7 +49,7 @@ class SoService : Service() {
             }
             startForeground(notificationConfig.id, builder.build())
         }else if(intent?.action ==Action.FOREGROUND_SERVICE_STOP.name){
-            stopForeground(Service.STOP_FOREGROUND_DETACH)
+            stopSelf()
         }
         return super.onStartCommand(intent, flags, startId)
     }

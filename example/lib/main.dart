@@ -46,6 +46,10 @@ class _MyAppState extends State<MyApp> {
       null);
   }
 
+  stopForegroundService() async {
+    await SoService.stopForegroundService();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,6 +65,10 @@ class _MyAppState extends State<MyApp> {
             RaisedButton(
               child: Text('startForegroundService'),
               onPressed : startForegroundService
+            ),
+            RaisedButton(
+              child: Text('stopForegroundService'),
+              onPressed : stopForegroundService
             )
           ],
         ),

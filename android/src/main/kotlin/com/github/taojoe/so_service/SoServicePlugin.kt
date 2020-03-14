@@ -147,6 +147,9 @@ public class SoServicePlugin: FlutterPlugin, MethodCallHandler {
       val channelConfig=channelConfigMap?.asNotificationChannelConfig()
       startForegroundService(notification, channelConfig)
       result.success(true)
+    }else if(call.method=="stopForegroundService"){
+      stopForegroundService()
+      result.success(true)
     }else {
       result.notImplemented()
     }
@@ -160,6 +163,11 @@ public class SoServicePlugin: FlutterPlugin, MethodCallHandler {
     intent.action = Action.FOREGROUND_SERVICE_START.name
     intent.putExtra(Names.INTENT_NOTIFICATION, notificationConfig)
     intent.putExtra(Names.INTENT_NOTIFICATION_CHANNEL, notificationChannelConfig ?: NotificationChannelConfig("so_service_channel_id", "so_service_channel_name", NotificationManager.IMPORTANCE_DEFAULT))
+    context.startService(intent)
+  }
+  fun stopForegroundService(){
+    val intent = Intent(context, SoService::class.java)
+    intent.action = Action.FOREGROUND_SERVICE_STOP.name
     context.startService(intent)
   }
 }
