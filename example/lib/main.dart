@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   startForegroundService() async{
     await SoService.startForegroundService(
-      NotificationConfig(1, 'ic_launcher', '中文名称', 'content', null, false, false),
+      NotificationConfig(1, 'so_service', '中文名称', 'content', null, false, false),
       null);
   }
 
