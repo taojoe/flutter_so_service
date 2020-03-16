@@ -23,9 +23,8 @@ class NotificationConfig{
   final String content;
   final String subtext;
   final bool chronometer;
-  final bool holdWakeLock;
 
-  NotificationConfig(this.id, this.icon, this.title, this.content, this.subtext, this.chronometer, this.holdWakeLock);
+  NotificationConfig(this.id, this.icon, this.title, this.content, this.subtext, this.chronometer);
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     'id':this.id,
@@ -34,7 +33,6 @@ class NotificationConfig{
     'content':this.content,
     'subtext':this.subtext,
     'chronometer':this.chronometer,
-    'holdWakeLock':this.holdWakeLock,
   };
 }
 

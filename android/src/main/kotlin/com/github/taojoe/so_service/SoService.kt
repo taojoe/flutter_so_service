@@ -19,7 +19,7 @@ class SoService : Service() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if(intent?.action==Action.FOREGROUND_SERVICE_START.name){
-            val bundle = intent.extras
+            val bundle = intent.extras!!
             val activityIntent= bundle.get(Names.INTENT_NOTIFICATION_ACTIVITY_INTENT) as Intent
             val pendingIntent = PendingIntent.getActivity(this, 0, activityIntent, 0)
             val notificationConfig=bundle.get(Names.INTENT_NOTIFICATION) as NotificationConfig

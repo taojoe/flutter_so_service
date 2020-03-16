@@ -55,15 +55,14 @@ data class NotificationChannelConfig(val id:String, val name:String, val importa
   }
 }
 
-data class NotificationConfig(val id:Int, val icon:String, val title:String?, val content:String?, val subtext:String?, val chronometer:Boolean, val holdWakeLock:Boolean?) : Parcelable {
+data class NotificationConfig(val id:Int, val icon:String, val title:String?, val content:String?, val subtext:String?, val chronometer:Boolean) : Parcelable {
   constructor(parcel: Parcel) : this(
           parcel.readInt(),
           parcel.readString(),
           parcel.readString(),
           parcel.readString(),
           parcel.readString(),
-          parcel.readValue(Boolean::class.java.classLoader) as Boolean,
-          parcel.readValue(Boolean::class.java.classLoader) as? Boolean) {
+          parcel.readValue(Boolean::class.java.classLoader) as Boolean) {
   }
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -73,7 +72,6 @@ data class NotificationConfig(val id:Int, val icon:String, val title:String?, va
     parcel.writeString(content)
     parcel.writeString(subtext)
     parcel.writeValue(chronometer)
-    parcel.writeValue(holdWakeLock)
   }
 
   override fun describeContents(): Int {
@@ -106,8 +104,7 @@ fun Map<String, Any?>.asNotificationConfig():NotificationConfig{
           this["title"] as String?,
           this["content"] as String?,
           this["subtext"] as String?,
-          this["chronometer"] as Boolean,
-          this["holdWakeLock"] as Boolean?
+          this["chronometer"] as Boolean
   )
 }
 
